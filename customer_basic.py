@@ -3,6 +3,34 @@ custlist=[]
 page=-1
 
 
+customer = {}
+ 
+while True:
+    gender = input("성별 : ")
+    gender = gender.upper
+    if gender in ("M", "F"):
+        customer["gender"] = gender
+        break
+    
+while True:
+    email = input("이메일 : ")
+    if "@" in email:
+        customer["email"] = email
+        break
+    else:
+         print("이메일에는 @가 포함되어야 합니다.")
+
+while True:
+    birthyear= input("출생년도 : ")
+    if len(birthyear) == 4:
+        customer["birthyear"] = birthyear
+        break
+
+custlist.append(customer)
+page = len(custlist) - 1  
+    
+    
+    
 while True:
     choice=input('''
     다음 중에서 하실 일을 골라주세요 :
