@@ -2,35 +2,9 @@ import re
 custlist=[]
 page=-1
 
-
-customer = {}
  
-while True:
-    gender = input("성별 : ")
-    gender = gender.upper
-    if gender in ("M", "F"):
-        customer["gender"] = gender
-        break
     
-while True:
-    email = input("이메일 : ")
-    if "@" in email:
-        customer["email"] = email
-        break
-    else:
-         print("이메일에는 @가 포함되어야 합니다.")
-
-while True:
-    birthyear= input("출생년도 : ")
-    if len(birthyear) == 4:
-        customer["birthyear"] = birthyear
-        break
-
-custlist.append(customer)
-page = len(custlist) - 1  
-    
-    
-    
+  
 while True:
     choice=input('''
     다음 중에서 하실 일을 골라주세요 :
@@ -46,6 +20,33 @@ while True:
     if choice=="I":        
         print("고객 정보 입력")
         customer={'name':'','gender':'',"email":'',"birthyear":''}
+        customer['name'] = input("이름 : ")
+        
+        while True:
+            gender = input("성별(M/F) : ")
+            gender = gender.upper()
+            if gender in ("M", "F"):
+                customer["gender"] = gender
+                break
+            
+        while True:
+            email = input("이메일 : ")
+            if "@" in email:
+                customer["email"] = email
+                break
+            else:
+                print("이메일에는 @가 포함되어야 합니다.")
+                
+        while True:
+            birthyear= input("출생년도(4자리) : ")
+            if birthyear.isdigit() and len(birthyear) == 4:
+                customer["birthyear"] = int(birthyear)
+                break
+        
+        custlist.append(customer)
+        print(customer)
+        print(custlist)
+        
     elif choice=="C":
         print("현재 고객 정보 조회")
     elif choice == 'P':
