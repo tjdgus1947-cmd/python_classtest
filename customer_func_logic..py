@@ -1,6 +1,5 @@
 import customer_func as cf
 
-
 custlist=[{'name': '김성현', 'gender': 'M', 'email': 'tjdgus1947@aaa.com', 'birthyear': 2001},
           {'name': '정민혁', 'gender': 'M', 'email': 'MIN01@aaa.com', 'birthyear': 2002},
           {'name': '문상현', 'gender': 'F', 'email': 'tkdgus5837@aaa.com', 'birthyear': 2003},
@@ -19,38 +18,21 @@ while True:
     Q - 프로그램 종료
     ''').upper()
 
-    if choice=="I":        
+    if choice=="I":                
         print("고객 정보 입력")
         page = cf.insertData(custlist, page)
         
     elif choice=="C":
         print("현재 고객 정보 조회")
-        total = len(custlist)
-        if page >= 0:
-            print(f"현재 페이지는 {page + 1}/{total}페이지 입니다.")
-            print(custlist[page])
-        else:
-            print("입력된 내용이 없습니다.")
+        cf.curView(custlist,page)
             
     elif choice == 'P':
         print("이전 고객 정보 조회")
-        if page <= 0:
-            print("첫번째 페이지 입니다.")
-            print(custlist[page])
-        else:
-            page = page-1
-            print(f"현재 페이지는 {page + 1}페이지 입니다.")
-            print(custlist[page])
-            
+        cf.preView(custlist,page)
+        
     elif choice == 'N':
         print("다음 고객 정보 조회")
-        if page >= len(custlist)-1:
-            print("마지막 페이지입니다.")
-            print(custlist[page])
-        else:
-            page = page+1
-            print(f"현재 페이지는 {page + 1}페이지 입니다.")
-            print(custlist[page])    
+        cf.nextView(custlist,page)    
             
     elif choice=='D':
         print("고객 정보 삭제")
